@@ -1,0 +1,22 @@
+.main{
+    display: inline-block;
+    font-family: 'Franklin Gothic Medium',sans-serif;
+    font-size: 20px;
+    margin-left: 1000px;
+    margin-top: 250px;
+    border: 1px solid #717377;
+    border-radius: 16px;
+    padding: 10px 10px 10px 10px;
+    background: rgb(152, 152, 230);
+    box-shadow: 0px 3px 15px rgba(113,115,119,0.5) ;
+}
+#country{
+    margin-bottom: 20px;
+}
+#city
+{
+    margin-bottom: 20px;
+}
+#btn{
+    margin-left: 100px;
+}
