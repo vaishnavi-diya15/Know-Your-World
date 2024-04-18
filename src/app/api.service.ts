@@ -8,8 +8,8 @@ import { CustomHttpClient } from './customHttpClient.service';
 })
 export class ApiService {
   constructor(private customHttpClient: CustomHttpClient) { }
-  getPopulation(country: string, city: string): Observable<any> {
-    const url = 'https://countriesnow.space/api/v0.1/countries/population?country=${country}&city=${city}';
+  getPopulation(country: string): Observable<any> {
+    const url = 'https://countriesnow.space/api/v0.1/countries/population?country=${{country}}';
     return this.customHttpClient.request('GET',url);
   }
 

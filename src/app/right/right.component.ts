@@ -10,13 +10,15 @@ import { FormsModule } from '@angular/forms';
 })
 export class RightComponent {
 
-  @Output() searchCountry = new EventEmitter<string>();
+  
   country: string = '';
   City: string = '';
 
-  onSearch() {
-    // Emit the country name to parent component
+  @Output() searchCountry: EventEmitter<string> = new EventEmitter<string>();
+
+  onSearch(inputEL: HTMLInputElement) {
+    console.log(inputEL.value);
+    this.country = inputEL.value; 
     this.searchCountry.emit(this.country);
-    this.City = ''; // Reset city name
   }
 }

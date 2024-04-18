@@ -1,6 +1,6 @@
 <div class="main">
-    Country:<input id="country" [(ngModel)]="country" ><br>
-    City:   <input id="city" [(ngModel)]="City"><br>
-    <button type="button" id="btn" class="btn btn-search" (click)="onSearch()">Submit</button>
+    Country:<input id="country" #searchCountry><br>
+    City:   <input id="city" #searchCity><br>
+    <button type="button" id="btn" class="btn btn-search" (click)="onSearch(searchCountry)">Submit</button>
 </div>
 

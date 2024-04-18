@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { warn } from 'console';
 
 @Component({
   selector: 'app-left',
@@ -18,8 +19,8 @@ export class LeftComponent {
 
   constructor(private apiService: ApiService) {}
   
-  fetchCountryDetails(country: string, city: string) {
-    this.apiService.getPopulation(country, city).subscribe((data) => {
+  fetchCountryDetails(country: string) {
+    this.apiService.getPopulation(country).subscribe((data) => {
       this.population = data;
     });
 

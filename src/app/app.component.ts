@@ -27,9 +27,9 @@ export class AppComponent {
 
   constructor(private apiService: ApiService) { }
 
-  onSearchCountry(country: any) {
-    this.selectedCountry = country;
-    
-  }
+  onSearchCountry(value: any) {
+    this.selectedCountry = value;
+    console.log(this.selectedCountry);
+  }
   
 }
