@@ -1,2 +1,3 @@
-<app-left></app-left>
-<app-right></app-right>
+
+<app-right (serachCountry)="onSearchCountry($event)"></app-right>
+<app-left [country]="selectedCountry"></app-left>

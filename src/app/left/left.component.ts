@@ -1,12 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-left',
-  standalone: true,
-  imports: [],
   templateUrl: './left.component.html',
-  styleUrl: './left.component.css'
+  styleUrls: ['./left.component.css']
 })
 export class LeftComponent {
+  @Input() country: any;
+  
+  population: any;
+  flag: any;
+  currency: any;
+  location: any;
+  capital: any;
+  
+
+  constructor(private apiService: ApiService) {}
+  
+  fetchCountryDetails(country: string, city: string) {
+    this.apiService.getPopulation(country, city).subscribe((data) => {
+      this.population = data;
+    });
+
+    this.apiService.getFlag(country).subscribe((data) => {
+      this.flag = data;
+    });
+
+    this.apiService.getCurrency(country).subscribe((data) => {
+      this.currency = data;
+    });
+
+    this.apiService.getLocation(country).subscribe((data) => {
+      this.location = data;
+    });
+
+    this.apiService.getCapital(country).subscribe((data) => {
+      this.capital = data;
+    });
+  }
 
 }
