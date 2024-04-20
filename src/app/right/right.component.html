@@ -1,6 +1,22 @@
 <div class="main">
-    Country:<input id="country" #searchCountry><br>
-    City:   <input id="city" #searchCity><br>
-    <button type="button" id="btn" class="btn btn-search" (click)="onSearch(searchCountry)">Submit</button>
+    <form>
+        <input placeholder="Enter Country........" id="country" #searchCountry><br>
+        <input placeholder="Enter City........" id="city" #searchCity><br>
+        <button type="button" id="btn" class="btn btn-search" (click)="onSearch(searchCountry,searchCity)" >GET INFOS</button>
+        <button type="reset" id="btn1" class="btn btn-search">Reset</button>
+    </form>
+    <br>
+
+    <div>
+        <p><u> POPULATION:</u> {{population}}</p>
+        <p><img id="image" src="{{flag}}" alt="flag"></p>
+        <p><u> CURRENCY:</u>  {{currency}}</p>
+        <p><u> CAPITAL:</u> {{capital}}</p>
+        <p><u> LOCATION</u></p>
+        <ul>
+           <li><p><u> LATITUDE:</u> {{lat}}</p></li> 
+            <li><p><u> LONGITUDE:</u> {{long}}</p></li>
+        </ul>
+</div>   
 </div>
 

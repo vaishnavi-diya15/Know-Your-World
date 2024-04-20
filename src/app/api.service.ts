@@ -1,36 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CustomHttpClient } from './customHttpClient.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  constructor(private customHttpClient: CustomHttpClient) { }
-  getPopulation(country: string): Observable<any> {
-    const url = 'https://countriesnow.space/api/v0.1/countries/population?country=${{country}}';
-    return this.customHttpClient.request('GET',url);
+  constructor(
+    private http: HttpClient
+  ) { }
+  getPopulation(city: string): Observable<any> {
+    let header = new HttpHeaders();
+    return this.http.post<HttpClient>("https://countriesnow.space/api/v0.1/countries/population/cities",{"city": city},{"headers":header});
   }
 
   getFlag(country: string): Observable<any> {
-    const url = 'https://countriesnow.space/api/v0.1/countries/population/flag?country=${country}';
-    return this.customHttpClient.request('GET',url);
-  }
+    let header = new HttpHeaders();
+    return this.http.post<HttpClient>('https://countriesnow.space/api/v0.1/countries/flag/images',{"country": country},{"headers":header});
+   }
 
   getCurrency(country: string): Observable<any> {
-    const url = 'https://countriesnow.space/api/v0.1/countries/population/currency?country=${country}';
-    return this.customHttpClient.request('GET',url);
-  }
+    let header = new HttpHeaders();
+    return this.http.post<HttpClient>('https://countriesnow.space/api/v0.1/countries/currency',{"country": country},{"headers":header});
+    }
 
   getLocation(country: string): Observable<any> {
-    const url = 'https://countriesnow.space/api/v0.1/countries/population/location?country=${country}';
-    return this.customHttpClient.request('GET',url);
-  }
+    let header = new HttpHeaders();
+    return this.http.post<HttpClient>('https://countriesnow.space/api/v0.1/countries/positions',{"country": country},{"headers":header});
+    }
 
   getCapital(country: string): Observable<any> {
-    const url = 'https://countriesnow.space/api/v0.1/countries/population/capital?country=${country}';
-    return this.customHttpClient.request('GET',url);
-  }
+    let header = new HttpHeaders();
+    return this.http.post<HttpClient>('https://countriesnow.space/api/v0.1/countries/capital',{"country": country},{"headers":header});
+    }
 
 }
