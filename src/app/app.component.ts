@@ -1,14 +1,12 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RightComponent } from "./right/right.component";
-// import { LeftComponent } from "./left/left.component";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Console } from 'node:console';
 import { catchError } from 'rxjs/operators';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
-// import { LeftModule } from './left/left.module';
 import { AppModule } from './app.module';
 
 

@@ -12,7 +12,8 @@ export class ApiService {
   ) { }
   getPopulation(city: string): Observable<any> {
     let header = new HttpHeaders();
-    return this.http.post<HttpClient>("https://countriesnow.space/api/v0.1/countries/population/cities",{"city": city},{"headers":header});
+    let data = this.http.post<HttpClient>("https://countriesnow.space/api/v0.1/countries/population/cities",{"city": city},{"headers":header});
+    return data;
   }
 
   getFlag(country: string): Observable<any> {

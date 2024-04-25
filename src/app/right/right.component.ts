@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-right',
@@ -21,43 +22,50 @@ export class RightComponent {
   lat: any;
   capital: any;
   constructor(private apiService: ApiService){}
-  @Output() searchCountry: EventEmitter<string> = new EventEmitter<string>();
+  
   
   onSearch(inputEL: HTMLInputElement,inputELCITY: HTMLInputElement) {
-    console.log("input elval",inputEL.value);
+    
     this.country = inputEL.value; 
     this.city = inputELCITY.value;
-    this.searchCountry.emit(this.country);
+  
     this.fetchCountryDetails(this.country,this.city);
     }
 fetchCountryDetails(country: string,city: string) {
   this.apiService.getPopulation(city).subscribe((data) => {
     this.population = data.data.populationCounts[0].value;
-    console.log("population",this.population)
-    
-  });
+  },
+  ((error: HttpErrorResponse) => {
+    if (error.status === 404) {
+      alert("CITY NOT FOUND");
+    } else {
+      console.error('An error occurred:', error.message);
+    }
+  }));
 
    this.apiService.getFlag(country).subscribe((data) => {
      this.flag = data.data.flag;
-     console.log('data',this.flag);
-  });
+  },
+  ((error: HttpErrorResponse) => {
+    if (error.status === 404) {
+      alert("COUNTRY NOT FOUND");
+    } else {
+      console.error('An error occurred:', error.message);
+    }
+  }));
 
   this.apiService.getCurrency(country).subscribe((data) => {
     this.currency = data.data.currency;
-    console.log('data',this.currency);
   });
 
   this.apiService.getLocation(country).subscribe((data) => {
     this.long = data.data.long;
     this.lat = data.data.lat
-    console.log('data',this.long);
-    console.log('data',this.lat);
   });
 
   this.apiService.getCapital(country).subscribe((data) => {
     this.capital = data.data.capital;
-    console.log('data',this.capital);
-    });
+  });
   }
 
 }
